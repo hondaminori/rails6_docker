@@ -4,11 +4,11 @@ RUN apk update \
 RUN apk add --no-cache imagemagick \
     && apk add --no-cache --virtual imagemagick-dev build-base autoconf \
     && apk add sudo git
-WORKDIR /bookers21
+WORKDIR /rails6_docker
 COPY Gemfile .
 COPY Gemfile.lock .
 RUN bundle install --jobs=2
-COPY . /bookers21
+COPY . /rails6_docker
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
 ENTRYPOINT ["entrypoint.sh"]
